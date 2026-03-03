@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Rocket, Database, Map, Target, TrendingUp, Share2, Layers, Smartphone } from 'lucide-react';
+import { Rocket, Map, Target, TrendingUp, Share2, Layers, Smartphone } from 'lucide-react';
 import SectionHeader from './ui/SectionHeader';
 
 const aiEvolutionPoints = [
@@ -13,7 +12,7 @@ const aiEvolutionPoints = [
   {
     title: "美股“七巨头”占标普 60% 市值",
     content: "以英伟达、微软为代表的 AI 核心企业（Magnificent Seven）强势领涨，其总市值一度占据标普 500 指数的 60%，资本市场全面向 AI 倾斜。",
-    image: "https://images.unsplash.com/photo-1611974765270-ca1258634369?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
     highlight: "60% 市值占比"
   },
   {
@@ -57,6 +56,131 @@ const amapPoints = [
     desc: "推动“黄小西”酒店智能体接入高德，逐步覆盖景区、餐饮等场景，打造全链条智能服务体系。"
   }
 ];
+
+// Enhanced component with Orthogonal "Bracket" Connectors
+const FusionRow = ({ left, right, center, stamp }: { left: string, right: string | string[], center: string, stamp: string }) => {
+  return (
+    <div className="relative mb-16 last:mb-0">
+      {/* Top Layer: Inputs */}
+      <div className="grid grid-cols-2 gap-8 lg:gap-24 mb-12 relative z-10">
+        {/* Left Input (Guilv) */}
+        <div className="bg-white p-5 rounded-xl shadow-sm border-t-4 border-t-emerald-500 border-x border-b border-secondary-100 h-full flex items-center justify-center text-center hover:shadow-md transition-all relative">
+          <p className="text-secondary-700 font-medium text-sm lg:text-base leading-relaxed">{left}</p>
+          {/* Connector Start Point */}
+          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-emerald-500 rounded-full border-4 border-white shadow-sm z-20"></div>
+        </div>
+
+        {/* Right Input (Huachuang) */}
+        <div className="bg-white p-5 rounded-xl shadow-sm border-t-4 border-t-blue-500 border-x border-b border-secondary-100 h-full flex flex-col items-center justify-center text-center hover:shadow-md transition-all relative">
+          {Array.isArray(right) ? (
+            right.map((item, idx) => (
+              <p key={idx} className={`text-secondary-700 font-medium text-sm lg:text-base leading-relaxed ${idx > 0 ? "mt-2 pt-2 border-t border-secondary-100 w-full" : ""}`}>
+                {item}
+              </p>
+            ))
+          ) : (
+            <p className="text-secondary-700 font-medium text-sm lg:text-base leading-relaxed">{right}</p>
+          )}
+          {/* Connector Start Point */}
+          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-blue-500 rounded-full border-4 border-white shadow-sm z-20"></div>
+        </div>
+      </div>
+
+      {/* Middle Layer: Orthogonal Connector Lines */}
+      <div className="absolute top-[calc(100%-10rem)] left-0 w-full h-16 pointer-events-none hidden lg:block">
+         {/* We need to connect the bottom-center of the two top boxes to the top-center of the bottom box */}
+         {/* Since we can't easily know the exact height of the boxes, we position this relative to the row container */}
+         {/* Actually, a better way is to place the connector lines absolutely within the row container */}
+         
+         {/* Left Vertical Line Down */}
+         <div className="absolute top-[30%] left-[25%] h-[40%] w-[2px] bg-gradient-to-b from-emerald-500 to-emerald-300"></div>
+         
+         {/* Right Vertical Line Down */}
+         <div className="absolute top-[30%] right-[25%] h-[40%] w-[2px] bg-gradient-to-b from-blue-500 to-blue-300"></div>
+         
+         {/* Horizontal Connecting Line */}
+         <div className="absolute top-[70%] left-[25%] right-[25%] h-[2px] bg-gradient-to-r from-emerald-300 via-secondary-300 to-blue-300"></div>
+         
+         {/* Center Vertical Line Down */}
+         <div className="absolute top-[70%] left-1/2 -translate-x-1/2 h-[30%] w-[2px] bg-secondary-300"></div>
+         
+         {/* Junction Dot */}
+         <div className="absolute top-[70%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-secondary-300 rounded-full z-10 flex items-center justify-center">
+            <div className="w-1.5 h-1.5 bg-secondary-400 rounded-full"></div>
+         </div>
+      </div>
+      
+      {/* Mobile Connectors (Simple Vertical) */}
+      <div className="lg:hidden absolute top-[30%] left-1/4 bottom-[30%] w-px bg-gradient-to-b from-emerald-500 to-emerald-200 opacity-50"></div>
+      <div className="lg:hidden absolute top-[30%] right-1/4 bottom-[30%] w-px bg-gradient-to-b from-blue-500 to-blue-200 opacity-50"></div>
+
+
+      {/* Bottom Layer: Outcome */}
+      <div className="flex justify-center relative z-10 mt-8">
+        <div className="relative w-full max-w-2xl bg-gradient-to-r from-emerald-50 to-blue-50 p-6 rounded-2xl border border-secondary-200 text-center shadow-sm">
+          <p className="text-secondary-900 font-bold text-lg lg:text-xl">{center}</p>
+          
+          {/* Connector End Point */}
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-3 h-3 bg-secondary-300 rounded-full border-4 border-white shadow-sm"></div>
+
+          {/* Stamp Badge */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 2, rotate: -45 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: -12 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, damping: 10, delay: 0.2 }}
+            className="absolute -top-3 -right-3 lg:-right-6 bg-white border-2 border-red-500 text-red-500 px-3 py-1 text-sm font-black uppercase tracking-widest shadow-sm rounded-sm"
+          >
+            {stamp}
+          </motion.div>
+        </div>
+      </div>
+      
+      {/* Structural Lines Overlay (Re-implementation for better positioning) */}
+      <div className="absolute inset-0 pointer-events-none hidden lg:block z-0">
+          {/* We need lines that start from the bottom of the top boxes (approx 45% down the container) and go to the top of the bottom box (approx 75% down) */}
+          {/* Since height is variable, we use percentages that generally align with the spacing */}
+          
+          {/* Left Path: Down -> Right -> Down */}
+          <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+             <defs>
+               <linearGradient id="grad-left" x1="0%" y1="0%" x2="0%" y2="100%">
+                 <stop offset="0%" stopColor="#10b981" /> {/* emerald-500 */}
+                 <stop offset="100%" stopColor="#cbd5e1" /> {/* secondary-300 */}
+               </linearGradient>
+               <linearGradient id="grad-right" x1="0%" y1="0%" x2="0%" y2="100%">
+                 <stop offset="0%" stopColor="#3b82f6" /> {/* blue-500 */}
+                 <stop offset="100%" stopColor="#cbd5e1" /> {/* secondary-300 */}
+               </linearGradient>
+             </defs>
+             
+             {/* Left Bracket Line */}
+             <path 
+               d="M 25% 45% V 65% H 50% V 75%" 
+               fill="none" 
+               stroke="url(#grad-left)" 
+               strokeWidth="2" 
+               vectorEffect="non-scaling-stroke"
+               className="opacity-30"
+             />
+             
+             {/* Right Bracket Line */}
+             <path 
+               d="M 75% 45% V 65% H 50% V 75%" 
+               fill="none" 
+               stroke="url(#grad-right)" 
+               strokeWidth="2" 
+               vectorEffect="non-scaling-stroke"
+               className="opacity-30"
+             />
+             
+             {/* Central Junction Dot */}
+             <circle cx="50%" cy="65%" r="4" fill="white" stroke="#cbd5e1" strokeWidth="2" />
+          </svg>
+      </div>
+    </div>
+  );
+};
 
 export default function Background() {
   return (
@@ -155,7 +279,7 @@ export default function Background() {
             </div>
           </div>
 
-          {/* Sub-section 3: Guilv & Huachuang */}
+          {/* Sub-section 3: Guilv & Huachuang (Refactored Structure) */}
           <div>
             <div className="flex items-center gap-3 mb-8">
               <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary-100 text-primary-600 font-bold text-sm">3</span>
@@ -164,73 +288,41 @@ export default function Background() {
               </h3>
             </div>
 
-            <div className="bg-gradient-to-br from-secondary-900 to-secondary-800 rounded-3xl p-8 lg:p-12 text-white relative overflow-hidden">
-              {/* Background decoration */}
-              <div className="absolute top-0 right-0 w-1/2 h-full bg-primary-900/20 blur-3xl rounded-full transform translate-x-1/3 -translate-y-1/4"></div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
-                {/* Left: Guilv Shuwang */}
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 rounded-lg bg-primary-500 flex items-center justify-center font-bold text-lg">贵</div>
-                    <h4 className="text-xl font-bold">贵旅数网这一年</h4>
-                  </div>
-                  <ul className="space-y-4 text-secondary-300">
-                    <li className="flex gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-2 flex-shrink-0"></span>
-                      <span>“黄小西”智能体矩阵的建设及运营，品牌形象与宣传推广持续加强。</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-2 flex-shrink-0"></span>
-                      <span>已完成全省3A级以上景区、4星级以上酒店等标准化资源的全面接入。</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-2 flex-shrink-0"></span>
-                      <span>逐渐成为集团打通各类平台的工具，链接内外各类产品及平台资源。</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Right: Huachuang Yunxin */}
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 rounded-lg bg-secondary-600 flex items-center justify-center font-bold text-lg">华</div>
-                    <h4 className="text-xl font-bold">华创云信的很多年</h4>
-                  </div>
-                  <ul className="space-y-4 text-secondary-300">
-                    <li className="flex gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-secondary-400 mt-2 flex-shrink-0"></span>
-                      <span>提供人工智能、大数据、支付结算的全栈技术支持。</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-secondary-400 mt-2 flex-shrink-0"></span>
-                      <span>持续运营旅游供应链金融服务，具备大体量旅游门票产品的组织能力。</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-secondary-400 mt-2 flex-shrink-0"></span>
-                      <span>以白酒交易所标品、加油站便利店运营为契机，深耕供应链组织。</span>
-                    </li>
-                  </ul>
-                </div>
+            <div className="bg-secondary-50/50 rounded-3xl p-6 lg:p-12 border border-secondary-100">
+              {/* Header Columns */}
+              <div className="grid grid-cols-2 gap-8 lg:gap-24 mb-12 text-center">
+                 <div className="flex flex-col items-center">
+                   <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl mb-3">贵</div>
+                   <h4 className="text-xl font-bold text-secondary-900">贵旅数网这一年</h4>
+                 </div>
+                 <div className="flex flex-col items-center">
+                   <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mb-3">华</div>
+                   <h4 className="text-xl font-bold text-secondary-900">华创云信的很多年</h4>
+                 </div>
               </div>
 
-              {/* Shared Achievements */}
-              <div className="mt-12 pt-8 border-t border-secondary-700">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                  <div className="p-4 bg-secondary-800/50 rounded-xl border border-secondary-700">
-                    <div className="text-primary-400 font-bold text-lg mb-1">有品牌</div>
-                    <div className="text-secondary-400 text-sm">黄小西智慧旅游品牌</div>
-                  </div>
-                  <div className="p-4 bg-secondary-800/50 rounded-xl border border-secondary-700">
-                    <div className="text-primary-400 font-bold text-lg mb-1">深产品</div>
-                    <div className="text-secondary-400 text-sm">旅游商品深度持续下沉</div>
-                  </div>
-                  <div className="p-4 bg-secondary-800/50 rounded-xl border border-secondary-700">
-                    <div className="text-primary-400 font-bold text-lg mb-1">宽供应链</div>
-                    <div className="text-secondary-400 text-sm">突破边界，向全场景升级</div>
-                  </div>
-                </div>
-              </div>
+              {/* Fusion Rows */}
+              <FusionRow 
+                left="“黄小西”智能体矩阵的建设及运营"
+                right="人工智能、大数据、支付结算全栈技术支持"
+                center="“黄小西”智慧旅游品牌形象、宣传推广持续加强"
+                stamp="有品牌"
+              />
+
+              <FusionRow 
+                left="已完成全省3A级以上景区、4星级以上酒店等标准化资源的全面接入，完善户外、探险、定制类旅游商品"
+                right={["旅游供应链金融服务的持续运营", "以化债为基础的大体量旅游门票产品的组织能力"]}
+                center="旅游商品的组织宽度不断拓展、深度持续下沉"
+                stamp="深产品"
+              />
+
+              <FusionRow 
+                left="逐渐成为贵旅集团打通各类平台的工具，链接集团内外各类产品及平台资源"
+                right={["以加油站便利店运营为线索，组织各类便利商品", "以白酒交易所标品、定制酒业务为契机，组织各类贵州好酒"]}
+                center="供应链组织能力逐步加强，突破旅游边界，向全场景升级"
+                stamp="宽供应链"
+              />
+
             </div>
           </div>
 

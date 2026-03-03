@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Bot, MessageSquare, Briefcase, BarChart, Shield, Headphones, Network } from 'lucide-react';
 import SectionHeader from './ui/SectionHeader';

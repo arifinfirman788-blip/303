@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { RefreshCw, Zap, Workflow, Share2, ShoppingBag, HardDrive, LayoutDashboard, ChevronRight } from 'lucide-react';
 import SectionHeader from './ui/SectionHeader';
