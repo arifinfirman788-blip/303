@@ -219,7 +219,7 @@ export default function Operations() {
                 <div className="space-y-3">
                    <div className="rounded-xl overflow-hidden shadow-sm border border-secondary-200 group cursor-pointer hover:shadow-md transition-all">
                       <img 
-                        src="/303/assets/yiwen.png" 
+                        src="/303/assets/yiwen.jpg" 
                         alt="一文读懂酒店智能体" 
                         className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
                       />
@@ -231,7 +231,7 @@ export default function Operations() {
                 <div className="space-y-3">
                    <div className="rounded-xl overflow-hidden shadow-sm border border-secondary-200 group cursor-pointer hover:shadow-md transition-all">
                       <img 
-                        src="/303/assets/yitu.png" 
+                        src="/303/assets/yitu.jpg" 
                         alt="一图看懂酒店智能体" 
                         className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
                       />

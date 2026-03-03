@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { ChevronRight, Sparkles } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -12,16 +11,6 @@ export default function Hero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center max-w-4xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-sm font-medium mb-8"
-          >
-            <Sparkles size={16} />
-            <span>AI驱动的未来酒店</span>
-          </motion.div>
-          
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -39,20 +28,6 @@ export default function Hero() {
           >
             <span className="font-semibold text-secondary-800">华创云信</span> 联合 <span className="font-semibold text-secondary-800">贵旅数网</span> 倾力打造
           </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-10 flex justify-center gap-4"
-          >
-            <button className="px-8 py-4 rounded-full bg-secondary-900 text-white font-semibold hover:bg-secondary-800 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center gap-2">
-              立即体验 <ChevronRight size={20} />
-            </button>
-            <button className="px-8 py-4 rounded-full bg-white text-secondary-700 border border-secondary-200 font-semibold hover:bg-secondary-50 transition-all hover:-translate-y-1">
-              了解更多
-            </button>
-          </motion.div>
         </div>
       </div>
     </div>
