@@ -329,7 +329,7 @@ export default function Background() {
                 viewport={{ once: true }}
                 className="flex items-center justify-center p-8 bg-secondary-100/50 rounded-2xl h-full min-h-[560px]"
               >
-                <div className="w-full h-full rounded-2xl shadow-xl overflow-hidden bg-white border border-secondary-200">
+                <div className="w-[375px] h-[667px] rounded-2xl shadow-xl overflow-hidden bg-white border border-secondary-200">
                    <div className="w-full h-full relative">
                       <iframe 
                         src="https://arifinfirman788-blip.github.io/HuangxiaoxiV4.0/" 
