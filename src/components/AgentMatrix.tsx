@@ -10,7 +10,8 @@ const agents = [
     role: "Scenic Spot Agent", 
     icon: <Mountain size={24} />,
     desc: "提供智慧导览、景点讲解与路线规划，实时播报客流与天气，提升游客沉浸式游览体验。",
-    link: "https://marsnowine-create.github.io/JQ-3.1/"
+    link: "https://marsnowine-create.github.io/JQ-3.1/",
+    snapshot: "/303/assets/scenic-snapshot-new.png"
   },
   { 
     id: "dining",
