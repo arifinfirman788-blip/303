@@ -327,23 +327,16 @@ export default function Background() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center p-8 bg-secondary-100/50 rounded-2xl"
+                className="flex items-center justify-center p-8 bg-secondary-100/50 rounded-2xl h-full min-h-[560px]"
               >
-                <div className="relative w-[280px] h-[560px] bg-black rounded-[3rem] border-8 border-gray-800 shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-500">
-                  {/* Phone Notch */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20"></div>
-                  
-                  {/* Screen Content */}
-                  <div className="w-full h-full bg-white overflow-hidden relative">
-                     {/* Live Embed */}
-                     <div className="w-[125%] h-[125%] origin-top-left scale-80 overflow-hidden absolute inset-0">
-                        <iframe 
-                          src="https://arifinfirman788-blip.github.io/HuangxiaoxiV4.0/" 
-                          className="w-full h-full border-0 block"
-                          title="Huang Xiaoxi Preview"
-                        />
-                     </div>
-                  </div>
+                <div className="w-full h-full rounded-2xl shadow-xl overflow-hidden bg-white border border-secondary-200">
+                   <div className="w-full h-full relative">
+                      <iframe 
+                        src="https://arifinfirman788-blip.github.io/HuangxiaoxiV4.0/" 
+                        className="w-full h-full border-0 block"
+                        title="Huang Xiaoxi Preview"
+                      />
+                   </div>
                 </div>
               </motion.div>
             </div>
