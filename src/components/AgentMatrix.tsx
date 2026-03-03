@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Network, Mountain, Utensils, User, Landmark, ArrowRight } from 'lucide-react';
+import { Mountain, Utensils, User, Landmark } from 'lucide-react';
 import SectionHeader from './ui/SectionHeader';
 
 const agents = [
