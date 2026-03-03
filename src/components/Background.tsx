@@ -336,7 +336,7 @@ export default function Background() {
                   {/* Screen Content */}
                   <div className="w-full h-full bg-white overflow-hidden relative">
                      {/* Live Embed */}
-                     <div className="w-[133.33%] h-[133.33%] origin-top-left scale-75 overflow-hidden absolute inset-0">
+                     <div className="w-[125%] h-[125%] origin-top-left scale-80 overflow-hidden absolute inset-0">
                         <iframe 
                           src="https://arifinfirman788-blip.github.io/HuangxiaoxiV4.0/" 
                           className="w-full h-full border-0 block"
