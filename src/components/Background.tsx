@@ -271,35 +271,92 @@ export default function Background() {
               </h3>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-secondary-50 p-8 rounded-3xl border border-secondary-100">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch bg-secondary-50 p-8 rounded-3xl border border-secondary-100">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="prose prose-lg text-secondary-600"
+                className="flex flex-col justify-center"
               >
-                <h4 className="text-xl font-bold text-secondary-900 mb-4">
-                  行业首发，震撼亮相
-                </h4>
-                <p className="mb-4">
-                  在备受瞩目的黄小西旅发大会上，酒店智能体首次公开亮相。作为大会的亮点之一，它不仅展示了前沿的 AI 技术，更通过实际场景演示，向行业展示了未来酒店服务的无限可能。
-                </p>
-                <p>
-                  大会现场，智能体流畅地完成了从住客意图识别、个性化推荐到服务指令下发的全流程操作，获得了在场行业专家与合作伙伴的高度评价，标志着贵州旅游服务正式迈入智能化新时代。
-                </p>
+                <div className="prose prose-lg text-secondary-600 mb-8">
+                  <h4 className="text-xl font-bold text-secondary-900 mb-4 flex items-center gap-2">
+                    <Rocket className="w-5 h-5 text-primary-500" />
+                    即将发布：全程陪伴的数字生命
+                  </h4>
+                  <p className="mb-6 leading-relaxed">
+                    在即将召开的旅发大会上，我们将重新定义“黄小西”。她不再仅仅是一个工具，而是一个有温度、有记忆、全程陪伴您贵州之旅的<strong>数字生命</strong>。
+                  </p>
+                  
+                  <div className="space-y-4">
+                    <div className="flex gap-4 items-start">
+                      <div className="w-8 h-8 rounded-lg bg-white border border-secondary-200 flex items-center justify-center text-lg shadow-sm flex-shrink-0">🎫</div>
+                      <div>
+                        <h5 className="font-bold text-secondary-900 text-sm">订票准备</h5>
+                        <p className="text-sm text-secondary-500">订票完成后，贴心提醒您携带身份证件，并根据天气建议出行装备。</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex gap-4 items-start">
+                      <div className="w-8 h-8 rounded-lg bg-white border border-secondary-200 flex items-center justify-center text-lg shadow-sm flex-shrink-0">🏨</div>
+                      <div>
+                        <h5 className="font-bold text-secondary-900 text-sm">入住体验</h5>
+                        <p className="text-sm text-secondary-500">入住后自动连接酒店服务，并为您定制专属的 Citywalk 探索方案。</p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4 items-start">
+                      <div className="w-8 h-8 rounded-lg bg-white border border-secondary-200 flex items-center justify-center text-lg shadow-sm flex-shrink-0">🏞️</div>
+                      <div>
+                        <h5 className="font-bold text-secondary-900 text-sm">景区游览</h5>
+                        <p className="text-sm text-secondary-500">化身金牌导游，为您提供深度文化讲解与实时路线导览。</p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4 items-start">
+                      <div className="w-8 h-8 rounded-lg bg-white border border-secondary-200 flex items-center justify-center text-lg shadow-sm flex-shrink-0">🍽️</div>
+                      <div>
+                        <h5 className="font-bold text-secondary-900 text-sm">餐饮服务</h5>
+                        <p className="text-sm text-secondary-500">根据口味偏好推荐地道美食，一键完成预订与点餐。</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
               
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="aspect-video bg-white rounded-2xl flex items-center justify-center border-2 border-dashed border-secondary-200 relative overflow-hidden group shadow-sm"
+                className="flex items-center justify-center p-8 bg-secondary-100/50 rounded-2xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-50 to-white opacity-50"></div>
-                <div className="text-secondary-400 text-center z-10">
-                  <Rocket className="w-12 h-12 mx-auto mb-3 text-primary-300" />
-                  <p className="text-lg font-medium">发布会现场配图位</p>
-                  <p className="text-sm mt-2 opacity-70">建议展示：发布会演讲照片或演示屏幕</p>
+                <div className="relative w-[280px] h-[560px] bg-black rounded-[3rem] border-8 border-gray-800 shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-500">
+                  {/* Phone Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20"></div>
+                  
+                  {/* Screen Content */}
+                  <div className="w-full h-full bg-white overflow-hidden relative">
+                     {/* Live Embed */}
+                     <div className="w-[133.33%] h-[133.33%] origin-top-left scale-75 overflow-hidden absolute inset-0">
+                        <iframe 
+                          src="https://arifinfirman788-blip.github.io/HuangxiaoxiV4.0/" 
+                          className="w-full h-full border-0 block"
+                          title="Huang Xiaoxi Preview"
+                          style={{ pointerEvents: 'none' }} // Disable iframe interaction
+                        />
+                     </div>
+                     
+                     {/* Click Overlay */}
+                     <a 
+                       href="https://arifinfirman788-blip.github.io/HuangxiaoxiV4.0/" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="absolute inset-0 z-30 flex items-center justify-center bg-black/0 hover:bg-black/10 transition-colors cursor-pointer group"
+                     >
+                       <span className="px-6 py-2 bg-white/90 text-secondary-900 text-xs font-bold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-2">
+                         访问演示 <ChevronRight size={14} />
+                       </span>
+                     </a>
+                  </div>
                 </div>
               </motion.div>
             </div>
