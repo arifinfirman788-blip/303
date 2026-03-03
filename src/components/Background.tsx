@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
-import { Rocket, Map, Target, TrendingUp, Share2, Layers, Smartphone } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Rocket, Map, Target, TrendingUp, Share2, Layers, Smartphone, ChevronRight } from 'lucide-react';
 import SectionHeader from './ui/SectionHeader';
 
 const aiEvolutionPoints = [
@@ -31,29 +32,52 @@ const aiEvolutionPoints = [
 
 const amapPoints = [
   {
+    id: "zone",
     icon: <Smartphone className="w-5 h-5" />,
     title: "“黄小西带你游贵州”专区上线",
-    desc: "2026年2月2日正式上线，集成信息查询、智能规划、语音导览、票务预订等功能，打造一站式文旅服务入口。"
+    desc: "2024年2月2日，高德地图APP正式上线“黄小西带你游贵州”文旅服务专区，以“黄小西”IP为视觉标识和交互入口，一站式集成信息查询、智能规划、语音导览、票务预订等功能，用户搜索“贵州”“贵州旅游”即可进入。同步上线“黄小西带你游贵阳”市州落地页，用户搜索“贵阳”可进入专属服务页面。",
+    images: [
+      "/303/assets/amap-1.png",
+      "/303/assets/amap-2.png"
+    ]
   },
   {
+    id: "growth",
     icon: <TrendingUp className="w-5 h-5" />,
     title: "营销推广与用户增长成效显现",
-    desc: "联合开屏宣传累计曝光183.3万次，带动“黄小西”曝光突破200万次，新增直接用户3.17万人次。"
+    desc: "双方联合打造“黄小西”在高德APP的开屏宣传，在关键节点推广“黄小西”品牌与贵州旅游形象，试验投放5天累计曝光183.3万次、点击7.7万次，曝光与点击量均显著提升。两大专区上线后，在短时间内便累计带动“黄小西”曝光量突破200万次，新增直接用户3.17万人次，品牌认知度与渗透率持续提高。",
+    images: [
+      "/303/assets/amap-growth.png"
+    ]
   },
   {
+    id: "content",
     icon: <Share2 className="w-5 h-5" />,
     title: "联合内容运营协同发力",
-    desc: "打造“黄小西扫街榜”，构建“内容种草—智能规划—产品订购—导航抵达”的用户旅程闭环。"
+    desc: "正在与高德联合打造“黄小西扫街榜”主题榜单及内容板块，引入本地优质文旅内容，构建“内容种草—智能规划—产品订购—导航抵达—服务体验”用户旅程闭环，实现线上线下场景无缝衔接。依托内容与智能服务协同，专区用户停留时长、服务调用频次双提升。",
+    images: [
+      "/303/assets/amap-content.png"
+    ]
   },
   {
+    id: "supply",
     icon: <Layers className="w-5 h-5" />,
     title: "供应链组织与资源整合",
-    desc: "依托本地资源网络，接入景区、酒店产品，推动高德生态内的旅游商品交易体系重构。"
+    desc: "依托华创云信供应链基础及贵旅集团的本地资源网络，接入景区、酒店等旅游产品至高德平台，借助高德平台实现旅游产品的用户触达与交易达成，通过整合供应链资源，推动高德生态内的旅游商品交易体系重构。同时，依托本地服务网络，形成从线上引流到线下体验的商业闭环。",
+    images: [
+      "/303/assets/amap-supply-1.png",
+      "/303/assets/amap-supply-2.png"
+    ]
   },
   {
+    id: "eco",
     icon: <Target className="w-5 h-5" />,
     title: "共推贵州旅游智能体服务生态",
-    desc: "推动“黄小西”酒店智能体接入高德，逐步覆盖景区、餐饮等场景，打造全链条智能服务体系。"
+    desc: "优先推动“黄小西”酒店智能体适配并接入高德地图，在地点详情页、搜索结果页等场景实现服务唤起，提升用户服务获取效率。在此基础上，分阶段推动景区、餐饮、旅行社等智能体接入，打造覆盖“吃住行游购娱”的全链条智能服务体系。",
+    images: [
+      "/303/assets/amap-eco-1.png",
+      "/303/assets/amap-eco-2.png"
+    ]
   }
 ];
 
@@ -183,6 +207,8 @@ const FusionRow = ({ left, right, center, stamp }: { left: string, right: string
 };
 
 export default function Background() {
+  const [activeAmapIndex, setActiveAmapIndex] = useState(0);
+
   return (
     <section id="background" className="py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -330,39 +356,120 @@ export default function Background() {
           <div>
             <div className="flex items-center gap-3 mb-8">
               <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary-100 text-primary-600 font-bold text-sm">4</span>
-              <h3 className="text-2xl font-bold text-secondary-900">
-                高德的合作
-              </h3>
+              <h3 className="text-2xl font-bold text-secondary-900">高德的合作</h3>
+            </div>
+            
+            <div className="bg-primary-50 rounded-2xl p-6 border border-primary-100 mb-12">
+              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+                  <div className="w-12 h-12 rounded-xl bg-white text-primary-600 flex items-center justify-center shadow-sm flex-shrink-0">
+                    <Map size={24} />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-secondary-900 mb-2">打造全域旅游服务新生态</h4>
+                    <p className="text-secondary-600 leading-relaxed max-w-4xl">
+                        通过与高德地图的深度合作，我们将“黄小西”IP与高德的LBS能力完美融合，从线上引流到线下体验，构建完整的商业闭环。
+                    </p>
+                  </div>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-1 bg-primary-50 rounded-3xl p-8 flex flex-col justify-center border border-primary-100">
-                <Map className="w-16 h-16 text-primary-500 mb-6" />
-                <h4 className="text-2xl font-bold text-secondary-900 mb-4">
-                  打造全域旅游<br/>服务新生态
-                </h4>
-                <p className="text-secondary-600 leading-relaxed">
-                  通过与高德地图的深度合作，我们将“黄小西”IP与高德的LBS能力完美融合，从线上引流到线下体验，构建完整的商业闭环。
-                </p>
-              </div>
-
-              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-                {amapPoints.map((point, index) => (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+              {/* Left: Display Area - Sticky on Desktop */}
+              <div className="lg:sticky lg:top-32 relative aspect-[4/3] lg:aspect-auto lg:h-[600px] rounded-3xl overflow-hidden shadow-xl border border-secondary-200 bg-secondary-900 group order-2 lg:order-1">
+                <AnimatePresence mode="wait">
                   <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-white p-6 rounded-2xl border border-secondary-100 hover:border-primary-200 hover:shadow-md transition-all group"
-                  >
-                    <div className="w-10 h-10 bg-secondary-50 rounded-lg flex items-center justify-center text-primary-600 mb-4 group-hover:bg-primary-500 group-hover:text-white transition-colors">
-                      {point.icon}
+                    key={activeAmapIndex}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute inset-0 w-full h-full bg-white"
+                >
+                  {amapPoints[activeAmapIndex].images.length === 1 ? (
+                    <img 
+                      src={amapPoints[activeAmapIndex].images[0]} 
+                      alt={amapPoints[activeAmapIndex].title}
+                      className="w-full h-full object-contain bg-secondary-50" 
+                    />
+                  ) : (
+                    <div className="grid grid-cols-2 h-full w-full gap-1 bg-secondary-50">
+                       <div className="relative overflow-hidden h-full group/img1 flex items-center justify-center">
+                         <img 
+                           src={amapPoints[activeAmapIndex].images[0]} 
+                           alt="Primary View"
+                           className="w-full h-full object-contain transition-transform duration-700 group-hover/img1:scale-105" 
+                         />
+                       </div>
+                       <div className="relative overflow-hidden h-full group/img2 flex items-center justify-center">
+                         <img 
+                           src={amapPoints[activeAmapIndex].images[1]} 
+                           alt="Secondary View"
+                           className="w-full h-full object-contain transition-transform duration-700 group-hover/img2:scale-105" 
+                         />
+                       </div>
                     </div>
-                    <h5 className="font-bold text-secondary-900 mb-2">{point.title}</h5>
-                    <p className="text-sm text-secondary-500 leading-relaxed">{point.desc}</p>
-                  </motion.div>
-                ))}
+                  )}
+                  
+                   {/* Overlay Text - Removed as requested */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/10 via-transparent to-transparent pointer-events-none"></div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Right: Interactive List (Accordion Style) */}
+            <div className="flex flex-col order-1 lg:order-2">
+              <div className="space-y-3">
+                    {amapPoints.map((point, index) => (
+                       <div
+                          key={point.id}
+                          className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+                            activeAmapIndex === index 
+                              ? "bg-white border-primary-500 shadow-md ring-1 ring-primary-100" 
+                              : "bg-secondary-50/50 border-transparent hover:bg-white hover:border-primary-200 hover:shadow-sm"
+                          }`}
+                       >
+                          <button
+                            onClick={() => setActiveAmapIndex(index)}
+                            className="w-full text-left p-4 flex items-center gap-4 group"
+                          >
+                            <div className={`p-2 rounded-lg transition-colors flex-shrink-0 ${
+                              activeAmapIndex === index ? "bg-primary-100 text-primary-600" : "bg-white text-secondary-400 group-hover:text-primary-500 shadow-sm"
+                            }`}>
+                               {point.icon}
+                            </div>
+                            
+                            <div className="flex-1 min-w-0">
+                               <h5 className={`font-bold transition-colors truncate ${
+                                  activeAmapIndex === index ? "text-primary-700" : "text-secondary-900"
+                               }`}>
+                                  {point.title}
+                               </h5>
+                            </div>
+                            
+                            <div className={`transition-transform duration-300 ${activeAmapIndex === index ? "rotate-90 text-primary-500" : "text-secondary-400 group-hover:text-primary-500"}`}>
+                               <ChevronRight size={18} />
+                            </div>
+                          </button>
+
+                          <AnimatePresence>
+                            {activeAmapIndex === index && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                <div className="px-4 pb-4 pt-0 pl-[4.5rem]">
+                                  <p className="text-sm text-secondary-600 leading-relaxed border-t border-secondary-100 pt-3">
+                                    {point.desc}
+                                  </p>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                       </div>
+                    ))}
+                 </div>
               </div>
             </div>
           </div>

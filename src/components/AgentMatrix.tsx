@@ -1,44 +1,32 @@
 import { motion } from 'framer-motion';
-import { Bot, MessageSquare, Briefcase, BarChart, Shield, Headphones, Network } from 'lucide-react';
+import { Network, Mountain, Utensils, User, Landmark } from 'lucide-react';
 import SectionHeader from './ui/SectionHeader';
 
 const agents = [
   { 
-    name: "客服智能体", 
-    role: "Customer Service", 
-    icon: <Headphones size={24} />,
-    desc: "7x24小时在线，即时响应住客咨询，处理预订与投诉，提升服务满意度。"
+    name: "景区智能体", 
+    role: "Scenic Spot Agent", 
+    icon: <Mountain size={24} />,
+    desc: "提供智慧导览、景点讲解与路线规划，实时播报客流与天气，提升游客沉浸式游览体验。"
   },
   { 
-    name: "营销智能体", 
-    role: "Marketing", 
-    icon: <MessageSquare size={24} />,
-    desc: "基于用户画像精准推送优惠活动，激活私域流量，提升复购率。"
+    name: "餐饮智能体", 
+    role: "Dining Agent", 
+    icon: <Utensils size={24} />,
+    desc: "基于口味偏好推荐地道美食，支持智能点餐与排队预约，打造舌尖上的个性化之旅。"
   },
   { 
-    name: "管理智能体", 
-    role: "Management", 
-    icon: <Briefcase size={24} />,
-    desc: "自动化排班与任务分配，实时监控运营状态，辅助管理层科学决策。"
+    name: "个人智能体", 
+    role: "Personal Agent", 
+    icon: <User size={24} />,
+    desc: "您的贴身AI管家，全天候响应个性化需求，从行程定制到生活服务，无微不至。"
   },
   { 
-    name: "数据智能体", 
-    role: "Data Analysis", 
-    icon: <BarChart size={24} />,
-    desc: "全维度数据采集与分析，生成可视化报表，洞察经营趋势与潜在风险。"
-  },
-  { 
-    name: "安防智能体", 
-    role: "Security", 
-    icon: <Shield size={24} />,
-    desc: "联动监控系统，智能识别异常行为，保障酒店与住客的安全。"
-  },
-  { 
-    name: "中枢智能体", 
-    role: "Core AI", 
-    icon: <Bot size={24} />,
-    desc: "作为大脑协调各子智能体工作，统一调度资源，确保系统高效运转。"
-  },
+    name: "政府智能体", 
+    role: "Government Agent", 
+    icon: <Landmark size={24} />,
+    desc: "对接监管数据，提供政策咨询与市场监测，助力旅游产业规范化、高质量发展。"
+  }
 ];
 
 export default function AgentMatrix() {
@@ -58,44 +46,23 @@ export default function AgentMatrix() {
           light={true}
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Left Column: Matrix Overview & Diagram Placeholder */}
-          <div className="lg:col-span-4 space-y-8">
-            <div className="bg-secondary-800/50 backdrop-blur-sm p-8 rounded-2xl border border-secondary-700">
-              <div className="flex items-center gap-3 mb-6">
-                <Network className="text-primary-400" size={28} />
-                <h3 className="text-xl font-bold">生态协同效应</h3>
-              </div>
-              <p className="text-secondary-400 leading-relaxed mb-6">
-                单一的智能体只能解决点状问题，而我们的矩阵式设计实现了智能体之间的互联互通。通过中枢智能体的统一调度，各职能智能体能够像高效团队一样紧密配合。
-              </p>
-              <div className="aspect-square bg-secondary-800 rounded-xl border border-dashed border-secondary-600 flex items-center justify-center relative overflow-hidden">
-                 <div className="text-center text-secondary-500">
-                    <p className="text-sm font-medium">矩阵架构图配图位</p>
-                    <p className="text-xs mt-2 opacity-60">建议展示拓扑结构图</p>
-                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Agents Grid */}
-          <div className="lg:col-span-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {agents.map((agent, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-secondary-800/30 backdrop-blur-sm p-6 rounded-2xl border border-secondary-700 hover:bg-secondary-800 hover:border-primary-500 transition-all group cursor-pointer flex gap-5"
-                >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {agents.map((agent, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-secondary-800/30 backdrop-blur-sm rounded-2xl border border-secondary-700 overflow-hidden hover:border-primary-500 transition-all group flex flex-col"
+            >
+              {/* Top: Info Section */}
+              <div className="p-6 flex gap-5 border-b border-secondary-700/50">
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 bg-secondary-700 rounded-xl flex items-center justify-center text-primary-400 group-hover:bg-primary-600 group-hover:text-white transition-all shadow-lg shadow-primary-900/20">
                       {agent.icon}
                     </div>
                   </div>
-                  
                   <div>
                     <h3 className="text-lg font-bold text-white mb-1">{agent.name}</h3>
                     <p className="text-secondary-400 text-xs uppercase tracking-wider mb-3">{agent.role}</p>
@@ -103,10 +70,20 @@ export default function AgentMatrix() {
                       {agent.desc}
                     </p>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+              </div>
+
+              {/* Bottom: Display Area */}
+              <div className="flex-1 bg-secondary-900/50 p-4 min-h-[200px] flex items-center justify-center relative overflow-hidden group-hover:bg-secondary-800/50 transition-colors">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="text-center text-secondary-600 group-hover:text-secondary-500 transition-colors z-10">
+                     <div className="w-16 h-16 mx-auto mb-3 rounded-lg border-2 border-dashed border-secondary-700 flex items-center justify-center">
+                        <span className="text-xs">界面/图表</span>
+                     </div>
+                     <p className="text-xs font-medium">{agent.name} 功能演示区</p>
+                  </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
