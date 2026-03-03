@@ -330,11 +330,12 @@ export default function Background() {
                 className="flex items-center justify-center p-8 bg-secondary-100/50 rounded-2xl h-full min-h-[480px]"
               >
                 <div className="w-[280px] h-[500px] rounded-2xl shadow-xl overflow-hidden bg-white border border-secondary-200 relative">
-                   <div className="w-[375px] h-[667px] absolute top-0 left-0 origin-top-left scale-[0.746]">
+                   <div className="w-[375px] h-[667px] absolute top-0 left-0 origin-top-left scale-[0.746] overflow-hidden">
                       <iframe 
                         src="https://arifinfirman788-blip.github.io/HuangxiaoxiV4.0/" 
-                        className="w-full h-full border-0 block"
+                        className="w-full h-full border-0 block overflow-hidden"
                         title="Huang Xiaoxi Preview"
+                        scrolling="no"
                       />
                    </div>
                 </div>
