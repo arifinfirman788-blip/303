@@ -341,21 +341,8 @@ export default function Background() {
                           src="https://arifinfirman788-blip.github.io/HuangxiaoxiV4.0/" 
                           className="w-full h-full border-0 block"
                           title="Huang Xiaoxi Preview"
-                          style={{ pointerEvents: 'none' }} // Disable iframe interaction
                         />
                      </div>
-                     
-                     {/* Click Overlay */}
-                     <a 
-                       href="https://arifinfirman788-blip.github.io/HuangxiaoxiV4.0/" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       className="absolute inset-0 z-30 flex items-center justify-center bg-black/0 hover:bg-black/10 transition-colors cursor-pointer group"
-                     >
-                       <span className="px-6 py-2 bg-white/90 text-secondary-900 text-xs font-bold rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-2">
-                         访问演示 <ChevronRight size={14} />
-                       </span>
-                     </a>
                   </div>
                 </div>
               </motion.div>
