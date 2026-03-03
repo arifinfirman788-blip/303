@@ -651,9 +651,7 @@ export default function Features() {
                      )}
                   </div>
                   
-                  <button className="mt-6 text-primary-600 text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all self-start">
-                     了解更多 <ChevronRight size={14} />
-                  </button>
+
                 </div>
 
                 {/* Image Display Column */}

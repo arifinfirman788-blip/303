@@ -28,13 +28,18 @@ export default function Navbar() {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#background" className="hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">项目背景</a>
-              <a href="#operations" className="hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">运营情况</a>
-              <a href="#features" className="hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">产品特点</a>
-              <a href="#matrix" className="hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">智能体矩阵</a>
-              <button className="bg-primary-600 hover:bg-primary-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-lg hover:shadow-primary-500/30">
-                查看报告
-              </button>
+              {['background', 'operations', 'features', 'matrix'].map((id) => (
+                <a 
+                  key={id}
+                  href={`#${id}`} 
+                  className="relative group px-3 py-2 text-sm font-medium transition-colors text-secondary-700 hover:text-primary-600"
+                >
+                  {id === 'background' ? '项目背景' : 
+                   id === 'operations' ? '运营情况' : 
+                   id === 'features' ? '产品特点' : '智能体矩阵'}
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ))}
             </div>
           </div>
           
